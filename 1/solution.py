@@ -4,7 +4,7 @@ import re
 dict = {'eno': '1', 'owt': '2', 'eerht': '3', 'ruof': '4', 'evif': '5', 'xis': '6', 'neves': '7', 'thgie': '8', 'enin': '9'}
 
 
-with open("input.txt") as puzzle:
+with open("1/input.txt") as puzzle:
     sol = []
     for line in puzzle.readlines():
         line = line[::-1]
@@ -15,9 +15,10 @@ with open("input.txt") as puzzle:
         sol.append(line1[0]+line1[-1])
 
     
-    print(sol)
-    # count = 0
-    # for num in sol:
-    #     count += int(num)
+print(sol)
+count = 0
 
-    # print("sum is: ", count)
+for num in sol:
+    count += int(num)
+
+print("sum is: ", count)
