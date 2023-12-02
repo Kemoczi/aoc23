@@ -21,4 +21,4 @@ count = 0
 for num in sol:
     count += int(num)
 
-print("sum is: ", count)
+print("UGUEM: ", count)
