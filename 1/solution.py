@@ -6,7 +6,7 @@ def make_number(string):
     dict_rev = {'eno': '1', 'owt': '2', 'eerht': '3', 'ruof': '4', 'evif': '5', 'xis': '6', 'neves': '7', 'thgie': '8', 'enin': '9'}
     indices = []
 
-    if any(re.search(key, string) for key in dict.keys()):
+    if any(re.search(key, string) for key in dict.keys()): # Check if there's need to search for 'word' numbers
 
         for pattern, number in dict.items():
             indices.append(string.find(pattern))
@@ -24,10 +24,10 @@ def make_number(string):
             left_nums = re.sub("[^0-9]", "", s_left)
             left = left_nums[0]
 
-        indices = []
+        indices = [] # Clear indices list before searching from right
+
         for pattern, number in dict_rev.items():       
-            indices.append(string[::-1].find(pattern))
-            
+            indices.append(string[::-1].find(pattern))            
 
         min = None
         min_ind = None
@@ -35,8 +35,7 @@ def make_number(string):
         for index, number in enumerate(indices):
             if number >= 0 and (min is None or number < min):
                 min = number
-                min_ind = index
-                
+                min_ind = index               
             
         if min_ind is not None:
             s_right = re.sub(list(dict.keys())[min_ind], list(dict.values())[min_ind], string)
@@ -49,6 +48,7 @@ def make_number(string):
     
     string_numbers = re.sub("[^0-9]", "", string)
     number = string_numbers[0] + string_numbers[-1]
+
     return number
 
 
