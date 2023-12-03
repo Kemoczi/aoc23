@@ -42,7 +42,7 @@ def make_number(string):
             right_nums = re.sub("[^0-9]", "", s_right)
             right = right_nums[-1]
             
-        number = left+right
+        number = left + right
         
         return number
     
