@@ -46,23 +46,21 @@ def make_number(string):
         
         return number
     
+    # If no words have been found, we deal with numbers only
     string_numbers = re.sub("[^0-9]", "", string)
     number = string_numbers[0] + string_numbers[-1]
 
     return number
 
-
 if __name__ == '__main__':
 
     with open("1/input.txt") as puzzle:
-        sol = []
+        numbers = []
         for line in puzzle.readlines():
-            sol.append(make_number(line))
+            numbers.append(make_number(line))
         
-    print(sol)
     count = 0
-
-    for num in sol:
+    for num in numbers:
         count += int(num)
 
     print("UGUEM: ", count)
