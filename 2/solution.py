@@ -29,8 +29,24 @@ def check_game(game):
         return False
     else:
         return True
- 
-    
+
+
 if __name__ == '__main__':
-    GAME = "Game 1: 4 red, 1 green, 15 blue; 6 green, 2 red, 10 blue; 7 blue, 6 green, 4 red; 12 blue, 10 green, 3 red"
-    print(check_game(GAME))
+    
+    GAMES = []
+
+    with open("2/input.txt") as puzzle:
+
+        for line in puzzle.readlines():
+            if check_game(line):
+                dupa = re.search(r"\d+", line)
+                GAMES.append(line[dupa.span()[0]:dupa.span()[1]])
+            else:
+                continue
+
+uguem = 0
+
+for game in GAMES:
+    uguem += int(game)
+
+print("UGUEM: ", uguem)
