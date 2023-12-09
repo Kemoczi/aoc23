@@ -32,15 +32,15 @@ def check_game(game):
 
 
 if __name__ == '__main__':
-    
+
     GAMES = []
 
     with open("2/input.txt") as puzzle:
 
         for line in puzzle.readlines():
             if check_game(line):
-                dupa = re.search(r"\d+", line)
-                GAMES.append(line[dupa.span()[0]:dupa.span()[1]])
+                game_id = re.search(r"\d+", line)
+                GAMES.append(line[game_id.span()[0]:game_id.span()[1]])
             else:
                 continue
 
