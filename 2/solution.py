@@ -4,20 +4,20 @@ def check_game(game):
 
     quantities = re.findall(r"\d+ \w+", game)
 
-    meta_list = []
+    mezzanine = []
     for item in quantities:
-        meta_list.append(item[2::].strip())
-        meta_list.append(int(item[0:2]))   
+        mezzanine.append(item[2::].strip())
+        mezzanine.append(int(item[0:2]))   
 
-    tuples_list = []
-    for i in range(0, len(meta_list)-1, 2):
-        tuples_list.append((meta_list[i], meta_list[i+1]))
+    tuples = []
+    for i in range(0, len(mezzanine)-1, 2):
+        tuples.append((mezzanine[i], mezzanine[i+1]))
 
     red = []
     blue = []
     green = []
 
-    for item in tuples_list:
+    for item in tuples:
         if item[0] == 'red':
             red.append(item[1])
         elif item[0] == 'blue':
