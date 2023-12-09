@@ -1,7 +1,6 @@
 import re
 
 def check_game(game):
-
     quantities = re.findall(r"\d+ \w+", game)
 
     mezzanine = []
@@ -34,19 +33,15 @@ def check_game(game):
 if __name__ == '__main__':
 
     GAMES = []
-
     with open("2/input.txt") as puzzle:
-
         for line in puzzle.readlines():
             if check_game(line):
                 game_id = re.search(r"\d+", line)
                 GAMES.append(line[game_id.span()[0]:game_id.span()[1]])
             else:
                 continue
-
-uguem = 0
-
+UGUEM = 0
 for game in GAMES:
-    uguem += int(game)
-
-print("UGUEM: ", uguem)
+    UGUEM += int(game)
+    
+print("UGUEM: ", UGUEM)
