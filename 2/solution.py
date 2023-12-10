@@ -1,6 +1,6 @@
 import re
 
-def check_game(game):
+def check_game(game, min_check = False):
     quantities = re.findall(r"\d+ \w+", game)
 
     mezzanine = []
@@ -24,24 +24,30 @@ def check_game(game):
         elif item[0] == 'green':
             green.append(item[1])
 
-    if any(i > 12 for i in red) or any(i > 14 for i in blue) or any(i > 13 for i in green):
-        return False
+    if min_check:
+        return max(red)*max(blue)*max(green)
     else:
-        return True
+        if any(i > 12 for i in red) or any(i > 14 for i in blue) or any(i > 13 for i in green):
+            return False
+        else:
+            return True
 
 
 if __name__ == '__main__':
 
     GAMES = []
+    POWS = []
+
     with open("2/input.txt") as puzzle:
         for line in puzzle.readlines():
+            POWS.append(check_game(line, min_check = True))
             if check_game(line):
                 game_id = re.search(r"\d+", line)
-                GAMES.append(line[game_id.span()[0]:game_id.span()[1]])
+                GAMES.append(int(line[game_id.span()[0]:game_id.span()[1]]))
             else:
                 continue
-UGUEM = 0
-for game in GAMES:
-    UGUEM += int(game)
+UGUEM = sum(GAMES)
+UGUEM_POWS = sum(POWS)
     
 print("UGUEM: ", UGUEM)
+print("UGUEM POWS: ", UGUEM_POWS)
